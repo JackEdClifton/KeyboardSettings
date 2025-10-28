@@ -46,7 +46,10 @@ void backgroundOnOff(bool* run) {
 int main() {
 
 	// hide console
-	std::this_thread::sleep_for(std::chrono::seconds(5));
+	std::this_thread::sleep_for(std::chrono::seconds(3));
+
+	FreeConsole();
+	std::this_thread::sleep_for(std::chrono::seconds(1));
 	ShowWindow(GetConsoleWindow(), SW_HIDE);
 
 	bool run = true;
