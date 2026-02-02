@@ -8,15 +8,11 @@ LDFLAGS :=
 UNAME_S := $(shell uname -s)
 
 ifeq ($(UNAME_S),Linux)
-    CXXFLAGS += -DLINUX
     LDFLAGS += -lX11 -lXtst
-    TARGET := keyboard-settings
+else
+    LDFLAGS += -mwindows
 endif
 
-ifeq ($(UNAME_S),Windows_NT)
-    CXXFLAGS += -DWINDOWS
-    TARGET := KeyboardSettings.exe
-endif
 
 all:
 	$(CXX) $(CXXFLAGS) $(SRC) -o $(TARGET) $(LDFLAGS)

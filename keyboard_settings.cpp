@@ -45,7 +45,7 @@ bool is_key_active(int key) {
     return false;
 
 #else
-	return GetKeyState(key)
+	return GetKeyState(key);
 #endif
 }
 
@@ -80,20 +80,7 @@ void set_key_status(int key, short targetValue = 0) {
 }
 
 
-void hide_console() {
-#ifdef __linux__
-#else
-	std::this_thread::sleep_for(std::chrono::seconds(3));
-	FreeConsole();
-	std::this_thread::sleep_for(std::chrono::seconds(1));
-	ShowWindow(GetConsoleWindow(), SW_HIDE);
-#endif
-}
-
-
 int main() {
-
-	hide_console();
 
 #ifdef __linux__
 	g_DISPLAY = XOpenDisplay(nullptr);
