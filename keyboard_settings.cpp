@@ -88,6 +88,13 @@ int main() {
 		exit(1);
 	}
 #endif
+
+	// probe a button (caplock) on startup
+	// this is for Linux/Wayland where a prompt askes
+	// "An application requested access to: Input devices"
+	// this can be bypassed in setting, but due to security
+	// reasons should be left disabled
+	simulate_key_press(caplock);
 	
 	while (true) { 
 		std::this_thread::sleep_for(std::chrono::milliseconds(50));
